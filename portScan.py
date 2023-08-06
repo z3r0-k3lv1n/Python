@@ -32,7 +32,7 @@ try:
         sock.close()
 
 except KeyboardInterrupt:
-    print("You pressed Ctrl+C")
+    print("\nYou pressed Ctrl+C")
     sys.exit()
 
 except socket.gaierror:
