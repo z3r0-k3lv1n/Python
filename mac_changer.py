@@ -12,7 +12,6 @@ def main():
     print(f"[+]    Changing MAC address for {interface} to {new_mac}...")
     print("=" * 80)
     
-    subprocess.call('ifconfig', shell=True)
     subprocess.call('ifconfig {interface} down', shell=True)
     subprocess.call('ifconfig {interface} hw ether {new_mac}', shell=True)
     subprocess.call('ifconfig {interface} up', shell=True)
