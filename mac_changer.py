@@ -12,7 +12,7 @@ def main():
     print(f"[+]    Changing MAC address for {interface} to {new_mac}")
     print("=" * 80)
 
-    subprocess.call(["ifconfig", interface, "down"]) # Calls the ifconfig and adds the interface user input and the down command as a string of commands
+    subprocess.call(["ifconfig", interface, "down"]) # Calls the "ifconfig" and adds the "interface" user input and the "down" command as a single command string
     subprocess.call(["ifconfig", interface, "hw", "ether", new_mac])
     subprocess.call(["ifconfig", interface, "up"])
 
