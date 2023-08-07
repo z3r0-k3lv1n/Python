@@ -6,8 +6,8 @@ import subprocess
 
 def main():
 
-    interface = "wlan0"
-    new_mac = "00:11:22::33::44:55"
+    interface = "Interface Name > "
+    new_mac = input("MAC Address > ")
     print("=" * 80)
     print(f"[+]    Changing MAC address for {interface} to {new_mac}...")
     print("=" * 80)
