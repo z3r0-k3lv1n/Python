@@ -5,6 +5,14 @@ import subprocess
 import optparse
 
 
+def get_arguments():
+    # Allow arguments to be passed in the command line when initiating the program
+    parser = optparse.OptionParser()
+    parser.add_option("-i", "--interface", dest="interface", help="The interface to have its MAC address changed.")
+    parser.add_option("-m", "--mac", dest="new_mac", help="The new MAC address for the chosen interface.")
+    return parser.parse_args()
+
+
 def change_mac(interface, new_mac):
     # ================================================================================================================
     # Print a banner and allow the user to enter their inputs for the interface name to be changed and the new MAC
@@ -25,17 +33,9 @@ def change_mac(interface, new_mac):
 
 
 def main():
-    # ================================================================================================================
-    # Allow arguments to be passed in the command line when initiating the program
-    parser = optparse.OptionParser()
-    parser.add_option("-i", "--interface", dest="interface", help="The interface to have its MAC address changed.")
-    parser.add_option("-m", "--mac", dest="new_mac", help="The new MAC address for the chosen interface.")
-    options, arguments = parser.parse_args()  # Sets two new variables and passes the values of the arguments that
-    # the user passes in the command line into them. Options will contain the values while arguments contain
-    # the -i or -m as an example
-    # ===============================================================================================================
-
-    change_mac(options.interface, options.new_mac)  # Calls the change_mac() function and passes in the valies of
+    options, arguments = get_arguments()  # Sets the options and arguments variables as the returned value of 
+    # the get_arguments() function
+    change_mac(options.interface, options.new_mac)  # Calls the change_mac() function and passes in the values of
     # the arguments entered on the command line by the user that are parsed in the options and arguments variables
 
 
