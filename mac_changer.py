@@ -7,7 +7,7 @@ import optparse
 
 def change_mac(interface, new_mac):
     # ================================================================================================================
-    # Set a banner and allow the user to enter their inputs for the interface name to be changed and the new MAC
+    # Print a banner and allow the user to enter their inputs for the interface name to be changed and the new MAC
     # address
     # ================================================================================================================
     print("=" * 80)
