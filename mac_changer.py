@@ -40,7 +40,7 @@ def change_mac(interface, new_mac):
 
 
 def main():
-    options = get_arguments()  # Sets the options and arguments variables as the returned value of
+    options = get_arguments()  # Sets the options variable as the returned value of
     # the get_arguments() function
     change_mac(options.interface, options.new_mac)  # Calls the change_mac() function and passes in the values of
     # the arguments entered on the command line by the user that are parsed in the options and arguments variables
