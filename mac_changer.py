@@ -40,26 +40,24 @@ def change_mac(interface, new_mac):
     # input and the "up" command as a single command string
 
 
-def main():
-    options = get_arguments()  # Sets the options variable as the returned value of
-    # the get_arguments() function
-    # change_mac(options.interface, options.new_mac)  # Calls the change_mac() function and passes in the values of
-    # the arguments entered on the command line by the user that are parsed in the options and arguments variables
-    ifconfig_result = subprocess.check_output(["ifconfig", options.interface])  # Checks the output of the
-    # options.interface in the ifconfig output. Sets it as a variable ifconfig_result.
-    ifconfig_result = ifconfig_result.decode("utf-8")  # Decodes the checked output into UTF-8 to avoid a TypeError
-    print(ifconfig_result)
-    mac_address_search_result = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w", ifconfig_result)  # Uses REGEX to search
-    # ifconfig output for a string formatted as a MAC Address
+def get_current_mac(interface):
+    ifconfig_result = subprocess.check_output(["ifconfig", interface])
+    ifconfig_result = ifconfig_result.decode("utf-8")
+    mac_address_search_result = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w", ifconfig_result)
 
     if mac_address_search_result:
-        print(mac_address_search_result.group(0))  # If the REGEX search finds a correctly formatted string it
-        # prints that string.
+        print(mac_address_search_result.group(0))
     else:
-        print("[-]  Could not read MAC Address.")  # Prints that it could not read the MAC address if no strings
-        # match the REGEX search.
+        print("[-]  Could not read MAC Address.")
+
+
+def main():
+    options = get_arguments()  # Sets the options and arguments variables as the returned value of
+    # the get_arguments() function
+    change_mac(options.interface, options.new_mac)  # Calls the change_mac() function and passes in the values of
+    # the arguments entered on the command line by the user that are parsed in the options and arguments variables
+    get_current_mac(options.interface)
 
 
 if __name__ == '__main__':
     main()
-
