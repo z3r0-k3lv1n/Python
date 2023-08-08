@@ -46,7 +46,7 @@ def get_current_mac(interface):
     mac_address_search_result = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w", ifconfig_result)
 
     if mac_address_search_result:
-        print(mac_address_search_result.group(0))
+        return mac_address_search_result.group(0)
     else:
         print("[-]  Could not read MAC Address.")
 
@@ -56,7 +56,8 @@ def main():
     # the get_arguments() function
     change_mac(options.interface, options.new_mac)  # Calls the change_mac() function and passes in the values of
     # the arguments entered on the command line by the user that are parsed in the options and arguments variables
-    get_current_mac(options.interface)
+    current_mac = get_current_mac(options.interface)
+    print(current_mac)
 
 
 if __name__ == '__main__':
