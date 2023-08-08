@@ -54,11 +54,16 @@ def get_current_mac(interface):
 def main():
     options = get_arguments()  # Sets the options and arguments variables as the returned value of
     # the get_arguments() function
-    change_mac(options.interface, options.new_mac)  # Calls the change_mac() function and passes in the values of
-    # the arguments entered on the command line by the user that are parsed in the options and arguments variables
     current_mac = get_current_mac(options.interface)
-    print(current_mac)
-
+    print(f"The current MAC Address is: {current_mac}")
+    change_mac(options.interface, options.new_mac)  # Calls the change_mac() function and passes in the values of
+    # the arguments entered on the command line by the user that are parsed in the options and arguments variables.
+    current_mac = get_current_mac(options.interface)
+    if current_mac == options.new_mac:
+        print(f"[+]     MAC Address was successfully changed to: {options.new_mac}")
+    else:
+        print("The MAC Address was not changed!")
+        
 
 if __name__ == '__main__':
     main()
