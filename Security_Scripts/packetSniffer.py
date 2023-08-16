@@ -2,6 +2,8 @@
 
 #  test web address to use http://testphp.vulnweb.com/login.php username=test, password=test
 
+# A packet sniffer
+
 import scapy.all as scapy
 from scapy.layers import http
 
