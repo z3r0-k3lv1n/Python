@@ -1,41 +1,49 @@
 import datetime
 
-
-class DateTimestampGenerator():
+class DateTimestampGenerator:
     def __init__(self):
-        self.current_time = datetime.datetime.now()
-        self.current_time = datetime.datetime.strftime(self.current_time, format='%H:%M:%S hrs Local')
-        self.current_date = datetime.datetime.today()
-        self.current_date = datetime.datetime.strftime(self.current_date, format='%A, %d %B %Y')
-        self.zulu = datetime.datetime.utcnow()
-        self.zulu_time = datetime.datetime.strftime(self.zulu, format='%H:%M:%S hrs UTC')
-        self.zulu_date = datetime.datetime.strftime(self.zulu, format='%A, %d %B %Y')
+        # Initialize the generator with current local time, date, and UTC time.
+        self.current_time = datetime.datetime.now().strftime('%H:%M:%S hrs Local')
+        self.current_date = datetime.datetime.today().strftime('%A, %d %B %Y')
+        self.zulu_time = datetime.datetime.utcnow().strftime('%H:%M:%S hrs UTC')
+        self.zulu_date = datetime.datetime.utcnow().strftime('%A, %d %B %Y')
 
     def generate_timestamp(self):
-        timestamp = self.current_time
-        return timestamp
+        """
+        Generate and return the current local timestamp.
+        """
+        return self.current_time
 
     def generate_datestamp(self):
-        datestamp = self.current_date
-        return datestamp
+        """
+        Generate and return the current local datestamp.
+        """
+        return self.current_date
 
     def generate_utc_time(self):
-        utc_time = self.zulu_time
-        return utc_time
+        """
+        Generate and return the current UTC time.
+        """
+        return self.zulu_time
 
     def generate_utc_date(self):
-        utc_date = self.zulu_date
-        return utc_date
-
+        """
+        Generate and return the current UTC date.
+        """
+        return self.zulu_date
 
 def main():
+    # Create an instance of DateTimestampGenerator.
     dt = DateTimestampGenerator()
+
+    # Generate timestamps and datestamps.
     time = dt.generate_timestamp()
     date = dt.generate_datestamp()
     utc_time = dt.generate_utc_time()
     utc_date = dt.generate_utc_date()
-    print(f"{utc_date} - {utc_time}\n{date} - {time}")
 
+    # Print the generated information.
+    print(f"{utc_date} - {utc_time}\n{date} - {time}")
 
 if __name__ == '__main__':
     main()
