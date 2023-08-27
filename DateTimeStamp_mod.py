@@ -11,27 +11,28 @@ class DateTimestampGenerator:
 
     def generate_timestamp(self):
         """
-        Generate and return the current local timestamp.
+        Generate and return the current local timestamp. Formatted in 'HH:MM:SS hrs Local'.
         """
         return self.current_time
 
     def generate_datestamp(self):
         """
-        Generate and return the current local datestamp.
+        Generate and return the current local datestamp. Formatted in 'Sunday, 27 August 2023'.
         """
         return self.current_date
 
     def generate_utc_time(self):
         """
-        Generate and return the current UTC time.
+        Generate and return the current UTC time. Formatted in 'HH:MM:SS hrs UTC'.
         """
         return self.zulu_time
 
     def generate_utc_date(self):
         """
-        Generate and return the current UTC date.
+        Generate and return the current UTC date. Formatted in 'Sunday, 27 August 2023'.
         """
         return self.zulu_date
+
 
 def main():
     # Create an instance of DateTimestampGenerator.
@@ -45,6 +46,7 @@ def main():
 
     # Print the generated information.
     print(f"{utc_date} - {utc_time}\n{date} - {time}")
+
 
 if __name__ == '__main__':
     main()
