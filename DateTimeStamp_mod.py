@@ -1,5 +1,6 @@
 import datetime
 
+
 class DateTimestampGenerator:
     def __init__(self):
         # Initialize the generator with current local time, date, and UTC time.
